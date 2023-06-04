@@ -6,9 +6,9 @@ Jonathan Cagua O.
 
 ## Trabajo práctico
 
-El sistema está compuesto por un módulo IoT diseñado para medir la humedad, temperatura y calidad del aire en un ambiente cerrado. Los datos capturados por este módulo se envían a través de un protocolo propietario, donde son recibidos, almacenados y visualizados en la nube utilizando TLS para garantizar la seguridad de la comunicación.
+El sistema está compuesto por un módulo IoT diseñado para medir la humedad, temperatura y calidad del aire en un ambiente cerrado. Los datos capturados por este módulo se envían a través de un protocolo propietario, donde son recibidos, almacenados y visualizados en la plataforma.
 
-Además, el equipo ofrece opciones de configuración y lectura a través de BLE (Bluetooth Low Energy), lo que permite una comunicación segura con los servicios correspondientes. También se incluyen alertas personalizadas que se ajustan a cada cliente, y a partir de los datos recopilados se puede generar un mapa de los diferentes ambientes.
+Además, el equipo ofrece opciones de configuración y lectura a través de BLE (Bluetooth Low Energy), lo que permite una comunicación segura con los servicios correspondientes. También se incluyen alertas personalizadas que se ajustan a cada cliente.
 
 
 ## Objetivo del Ataque
@@ -52,7 +52,7 @@ El objetivo final del ataque es ataque de manipulacion de datos.
 
     - [[T1574] Hijack Execution Flow](https://attack.mitre.org/techniques/T1574/)
 
-        Manipulación del proceso de actualización del firmware : Interceptar o modificar las actualizaciones de firmware inalámbricas para instalar firmware malicioso en el dispositivo.
+        Manipulación del proceso de actualización del firmware o manipulacion de configuracion: Interceptar o modificar las actualizaciones de firmware inalámbricas para instalar firmware malicioso en el dispositivo o intersectar configuracion y alterarlas.
 
 6. Command & Control 
 
