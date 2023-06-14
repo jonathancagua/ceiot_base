@@ -13,55 +13,46 @@ Además, el equipo ofrece opciones de configuración y lectura a través de BLE 
 
 ## Objetivo del Ataque
 
-El objetivo final del ataque es la manipulación de datos, con el fin de alterar la información del firmware o visualizar las opciones de configuración que se envían desde el servidor o hacia el servidor, con el propósito de enviar información incorrecta.
-
+El objetivo final del ataque es la manipulación de datos, para dejar fuera de linea a los dispositivos.
 
 1. Reconnaisssance
 
     - [[T1592] Gather Victim Host Information ](https://attack.mitre.org/techniques/T1592/)
-        Obtener informacion sobre el dispositivo y ver repositorios sobre el dispositivo, revisar la mac y ver informacion tecnica en el internet.
+        Obtener informacion sobre el dispositivo y ver repositorios sobre el dispositivo, si es  hardware abierto para ver puertos disponibles.
 
     - [[T1046] Network Service Scanning ](https://attack.mitre.org/techniques/T1046/)
-        Obtener sobre los servicios y dispositivos BLE disponibles, identificando los perfiles y características admitidos por el dispositivo IoT.
+        Utilizar herramientas de escaneo de BLE, como "hcitool" para identificar dispositivos BLE cercanos y recopilar información sobre ellos y servicios disponibles.
+    - Analizar los mensajes de anuncio (advertisement) enviados por dispositivos BLE para obtener información sobre los     nombres de los dispositivos y los servicios que ofrecen.
+
+    - Examinar los perfiles de servicios BLE disponibles públicamente para identificar vulnerabilidades conocidas
 
 2. Weaponization 
 
-    - [[T1200] Hardware Additions](https://attack.mitre.org/techniques/T1200/)
-
-        Hardware Additions (T1200): Agregar hardware adicional al dispositivo IoT para interceptar o manipular el tráfico BLE, como dispositivos de captura de paquetes.
+    - Desarrollaria malware específico para dispositivos BLE que aproveche vulnerabilidades conocidas, como un malware diseñado para explotar la vulnerabilidad BlueBorne que afecta a dispositivos BLE y Wi-Fi.
+    - Crear herramientas de inyección de paquetes personalizadas que permitan la manipulación de las comunicaciones BLE, como enviar paquetes maliciosos para forzar una desconexión o enviar comandos de control falsos.
 
 3. Delivery
 
-    - [[T1414] Deliver Malicious App via Authorized App Store](https://attack.mitre.org/techniques/T1414/)
-        Distribuir una aplicación BLE maliciosa a través de una tienda de aplicaciones autorizada para que los usuarios la descarguen e instalen en sus dispositivos IoT.
-    - [[T1203] Phishing for Hardware](https://attack.mitre.org/techniques/T1203/)    
-        Engañar a los propietarios de dispositivos IoT para que descarguen e instalen aplicaciones maliciosas a través de técnicas de phishing, utilizando sitios web falsos o mensajes de correo electrónico fraudulentos.
+    - Enviar paquetes maliciosos a través de una conexión BLE establecida para explotar vulnerabilidades específicas de un dispositivo BLE y entregar el malware.
+    - Aprovechar vulnerabilidades en la configuración o en el emparejamiento de dispositivos BLE para establecer una conexión maliciosa y entregar el malware.
 
 
 4. Exploitation
 
-    - [[T1588] Obtain Capabilities: Exploits ](https://attack.mitre.org/techniques/T1588/)
-        Explorar vulnerabilidades entre la aplicacion movil y el modulo IOT para ver fallas de seguridad en el login y manipular su trafico. Se pueden usar herramientas y sniffer de trafico hasta encontrar un patron.
+    - Inyectar malware en la memoria de un dispositivo BLE comprometido, aprovechando vulnerabilidades de desbordamiento de búfer o inyección de comandos para lograr la persistencia en el dispositivo.
+    - Explotar una vulnerabilidad en la actualización o en el proceso de carga de firmware del dispositivo BLE para instalar un firmware modificado o malicioso.
         
-
-
 5. Installation
-    - [[T1014] Rootkit ](https://attack.mitre.org/techniques/T1014/)
-        Instalar un rootkit en el firmware del dispositivo IoT para obtener acceso y control persistente, lo que permitira interceptar el tráfico BLE.
-    - [[T1601] Modify System Image ](https://attack.mitre.org/techniques/T1601/)
-        Modificar la imagen del sistema del dispositivo IoT para incluir código malicioso que intercepte o manipule el tráfico BLE.
-        Y buscar credenciales en Flash del dispositivo o certificados.
+    - Inyectar malware en la memoria de un dispositivo BLE comprometido: Esto se puede lograr aprovechando vulnerabilidades de desbordamiento de búfer o inyección de comandos en el firmware o en la aplicación del dispositivo BLE. Al explotar estas vulnerabilidades, se puede inyectar código malicioso en la memoria del dispositivo.
+    - Explotar una vulnerabilidad en la actualización o en el proceso de carga de firmware del dispositivo BLE: Al encontrar y aprovechar una vulnerabilidad en el proceso de actualización o carga de firmware del dispositivo BLE, se puede reemplazar o modificar el firmware del dispositivo con una versión modificada o maliciosa. Esto puede permitir el control completo del dispositivo y la ejecución de acciones maliciosas.
 
 6. Command & Control 
 
-    - [[T1040] Network Sniffing](https://attack.mitre.org/techniques/T1040/)
-        Realizar un análisis pasivo de la red para capturar, analizar el tráfico BLE y extraer los datos.
+    - Establecer una conexión encubierta a través de canales BLE para enviar comandos y recibir información de los dispositivos comprometidos, utilizando técnicas de ocultación y cifrado para evadir la detección.
 
 
 7. Actions on Objectives
 
-    - [[T1583] Acquire Infrastructure](https://attack.mitre.org/techniques/T1583/)
-        Obtener la infraestructura necesaria, para recibir y almacenar los datos interceptados entre la aplicación BLE y el dispositivo IoT.
-    - [[T1030] Data Transfer Size Limits ](https://attack.mitre.org/techniques/T1030/)
-        Limitar el tamaño de los paquetes de datos transferidos entre la aplicación BLE y el dispositivo IoT para evitar la detección y el análisis.
-
+    - Robo de datos: Se puede datos sensibles almacenados en el dispositivo BLE, como información personal, credenciales de acceso o datos confidenciales.
+    - Manipulación de comunicaciones: se puede manipular las comunicaciones BLE entre el dispositivo comprometido y otros dispositivos conectados, lo que puede permitir realizar ataques de intermediario o modificar los datos transmitidos.
+    - Control remoto: se puede ejercer control remoto sobre el dispositivo BLE comprometido, lo que puede implicar la ejecución de comandos arbitrarios, la activación de funciones no autorizadas o el uso del dispositivo comprometido como punto de acceso para realizar ataques adicionales a otros dispositivos.
